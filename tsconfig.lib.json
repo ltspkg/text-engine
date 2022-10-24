@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "declaration": true,
+        "declarationDir": "types",
+        "sourceMap": false,
+        "noEmit": false,
+        "outDir": "./es",
+        "target": "ES6"
+    }
+}

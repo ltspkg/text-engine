@@ -100,7 +100,7 @@ export class TextEngine {
     let execReulst: null | RegExpExecArray = null;
 
     do {
-      const reg = /#([A-z\d-_]+)?{(\w+)}([,?[A-z\d-_]*]*)?#/;
+      const reg = /#([A-z\d-_]+)?{(.+)}([,?[A-z\d-_]*]*)?#/;
 
       execReulst = reg.exec(textResult);
 
