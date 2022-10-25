@@ -9,5 +9,5 @@
         "outDir": "./es",
         "target": "ES6"
     },
-    "exclude": ["./src/**/*.test.ts"]
+    "exclude": ["./src/**/__test__/*.test.ts"]
 }
