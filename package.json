@@ -1,14 +1,19 @@
 {
   "name": "text-engine",
   "version": "0.1.0-beta.1",
+  "description": "一个将字符串中匹配的片段，按照自定义的配置规则解析为目标字符串的文本引擎",
   "type": "module",
   "types": "./types/index.d.ts",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "files": [
     "lib",
     "types"
   ],
   "main": "./lib/text-engine.js",
   "module": "./es/index.js",
+  "license": "MIT",
   "scripts": {
     "dev": "vite ./demo",
     "build": "tsc -p tsconfig.lib.json && vite build --config vite.config.lib.ts",
@@ -20,5 +25,8 @@
     "vite": "^3.1.0",
     "vitest": "^0.24.3"
   },
-  "repository": {}
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ltspkg/text-engine.git"
+  }
 }

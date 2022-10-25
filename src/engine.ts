@@ -9,17 +9,17 @@ export type TextEngineTransferFn<T = any, S = any> = (result: T) => S;
 /** 文本引擎规则配置项 */
 export interface TextEngineOption {
   /** 规则模式（#xx{XX}xx#）右侧的处理函数 */
-  rightTransfer: Record<string, TextEngineTransferFn>;
+  transfers: Record<string, TextEngineTransferFn>;
   /** 规则模式（#xx{XX}xx#）左侧的渲染函数 */
-  leftRender: Record<string, TextEngineRenderFn>;
+  renders: Record<string, TextEngineRenderFn>;
 }
 
 /** 文本引擎规则默认配置项 */
 export interface TextEngineDefaultOption {
   /** 规则模式（#xx{XX}xx#）右侧的处理函数 */
-  rightTransfer?: TextEngineTransferFn;
+  transfer?: TextEngineTransferFn;
   /** 规则模式（#xx{XX}xx#）左侧的渲染函数 */
-  leftRender?: TextEngineRenderFn;
+  render?: TextEngineRenderFn;
 }
 
 /**
@@ -45,14 +45,14 @@ export class TextEngine {
   constructor(option: TextEngineOption, defaultConf?: TextEngineDefaultOption) {
     this._option = option;
 
-    const { rightTransfer, leftRender } = defaultConf || {};
+    const { transfer, render } = defaultConf || {};
 
-    if (rightTransfer) {
-      this._defaultTransferFn = rightTransfer;
+    if (transfer) {
+      this._defaultTransferFn = transfer;
     }
 
-    if (leftRender) {
-      this._defaultRenderFn = leftRender;
+    if (render) {
+      this._defaultRenderFn = render;
     }
   }
 
@@ -68,7 +68,7 @@ export class TextEngine {
     let result: unknown = text;
 
     transferLabels.forEach((label) => {
-      const fn = this._option?.rightTransfer[label] ?? this._defaultTransferFn;
+      const fn = this._option?.transfers[label] ?? this._defaultTransferFn;
 
       result = fn(result);
     });
@@ -86,9 +86,16 @@ export class TextEngine {
     textTransfered: unknown,
     renderLabel: string
   ): string {
-    const fn = this._option?.leftRender[renderLabel] ?? this._defaultRenderFn;
+    const fn = this._option?.renders[renderLabel] ?? this._defaultRenderFn;
 
     return fn(textTransfered);
+  }
+
+  /**
+   * 获取当前文本引擎的规则配置项
+   */
+  public getOption(): TextEngineOption | null {
+    return this._option ?? null;
   }
 
   /**

@@ -8,5 +8,6 @@
         "noEmit": false,
         "outDir": "./es",
         "target": "ES6"
-    }
+    },
+    "exclude": ["./src/**/*.test.ts"]
 }

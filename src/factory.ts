@@ -26,6 +26,11 @@ export function textEngineFactory(
       eng && eng.setOption(option);
     },
 
+    /** 获取当前文本引擎规则配置项 */
+    getOption(): TextEngineOption | null {
+      return eng?.getOption() ?? null;
+    },
+
     /** 销毁处理 */
     destroy(): void {
       eng?.destroy();
