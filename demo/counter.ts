@@ -1,12 +1,12 @@
 import { textEngineFactory } from '../src'
 
 const textEngine = textEngineFactory({
-  leftRender: {
+  renders: {
     a1(text) {
       return `<div style="color: red">${text}</div>`;
     }
   },
-  rightTransfer: {
+  transfers: {
     b1(s1): number {
       return Number(s1);
     },
