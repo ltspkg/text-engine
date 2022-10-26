@@ -16,7 +16,9 @@
   "module": "./es/index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "vite ./demo",
+    "demo": "vite ./demo",
+    "docs:dev": "vite ./docs",
+    "docs:build": "vite build ./docs",
     "build": "tsc -p tsconfig.lib.json && vite build --config vite.config.lib.ts",
     "test": "vitest --config vitest.config.lib.ts --coverage"
   },
