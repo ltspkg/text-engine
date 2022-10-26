@@ -13,7 +13,7 @@
 ## 安装
 
 ```bash
-npm install text-engine --save
+npm install @ltspkgorg/text-engine --save
 ```
 
 ## 使用
@@ -21,7 +21,7 @@ npm install text-engine --save
 #### 步骤一：创建文本引擎
 
 ```typescript
-import { textEngineFactory } from "text-engine";
+import { textEngineFactory } from "@ltspkgorg/text-engine";
 
 const textEngine = textEngineFactory({
   renders: {

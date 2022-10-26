@@ -18,10 +18,11 @@
   "scripts": {
     "dev": "vite ./demo",
     "build": "tsc -p tsconfig.lib.json && vite build --config vite.config.lib.ts",
-    "test": "vitest --config vitest.config.lib.ts"
+    "test": "vitest --config vitest.config.lib.ts --coverage"
   },
   "devDependencies": {
     "@types/node": "^18.11.4",
+    "@vitest/coverage-c8": "^0.24.3",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
     "vitest": "^0.24.3"
