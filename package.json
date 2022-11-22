@@ -1,6 +1,6 @@
 {
   "name": "@ltspkgorg/text-engine",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0-beta.2",
   "description": "一个将字符串中匹配的片段，按照自定义的配置规则解析为目标字符串的文本引擎",
   "type": "module",
   "types": "./types/index.d.ts",
