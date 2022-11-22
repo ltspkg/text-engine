@@ -5,6 +5,7 @@ const textEngine = textEngineFactory({
   renders: {
     a1: (val: unknown) => `<div>${val}</div>`,
     a2: (val: unknown) => `<span style="color:red">${val}</span>`,
+    a3: () => `<span>noting todo</span>`
   },
   transfers: {
     b1: (val: unknown) => Number(val) * 1000,
@@ -48,6 +49,17 @@ it("销毁后的引擎解析无效", () => {
     textEngine2.destroy();
     expect("销毁后的#{文本}#内容").toBe(
       textEngine2.parse("销毁后的#{文本}#内容")
+    );
+  }
+});
+
+it("不需要解析值", () => {
+  const option = textEngine.getOption();
+
+  if (option) {
+    const textEngine2 = textEngineFactory(option);
+    expect("销毁后的<span>noting todo</span>内容").toBe(
+      textEngine2.parse("销毁后的#a3{}#内容")
     );
   }
 });
