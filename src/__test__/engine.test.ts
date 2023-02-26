@@ -35,11 +35,11 @@ it("转换的文本中含有左侧规则符号", () => {
 });
 
 it("转换的文本中含有右侧规则符号", () => {
-  const result = textEngine.parse("含有右侧规则符号的文本#a1{测试右侧（}#）规则}#符号");
-  expect(`含有右侧规则符号的文本<div>测试右侧（}#）规则</div>符号`).toEqual(result);
+  const result = textEngine.parse("含有右侧规则符号的文本#a1{测试右侧（}）规则}#符号");
+  expect(`含有右侧规则符号的文本<div>测试右侧（}）规则</div>符号`).toEqual(result);
 
-  const result1 = textEngine.parse("含有多个右侧规则符号的文本#a1{测试右侧（}#、}a,b#）规则}#符号");
-  expect(`含有多个右侧规则符号的文本<div>测试右侧（}#、}a,b#）规则</div>符号`).toEqual(result1);
+  const result1 = textEngine.parse("含有多个右侧规则符号的文本#a1{测试右侧（#、}a,b）规则}#符号");
+  expect(`含有多个右侧规则符号的文本<div>测试右侧（#、}a,b）规则</div>符号`).toEqual(result1);
 });
 
 
@@ -79,5 +79,17 @@ it("转换的文本中含有空格（开头、中间、结尾）以及换行符"
   本含有空格符的文本含有空格符的文本含有空格符的文本
   本含有空格符的文本含有空格符的文本含有空格符的文本
   本含有空格符的文本含有空格符的文本含有空格符的文本`).toEqual(result);
+});
+
+it("多个转换的文本中含有空格（开头、中间、结尾）", () => {
+  const result = textEngine.parse(`#a1{ 测试左侧 规则  }#文本含有空格符的文本#a1{ 测试左侧 规则  }#`);
+
+  expect(`<div> 测试左侧 规则  </div>文本含有空格符的文本<div> 测试左侧 规则  </div>`).toEqual(result);
+});
+
+it("转换的文本中为空字符串", () => {
+  const result = textEngine.parse(``);
+
+  expect(``).toEqual(result);
 });
 
